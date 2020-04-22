@@ -12,13 +12,11 @@
 using namespace std;
 
 class UsersFile {
-    fstream textFile;
-    string usersFileName;
-
+    const string usersFileName;
 public:
-    UsersFile();
-    void saveUsersToFile(vector <User> users);      // zapisanie uzytkownikow do pliku tekstowego
-    vector <User> addUsersFromFile();               // wczytanie uzytkownikow z pliku tekstowego do vectora
+    UsersFile(string USERSFILENAME) : usersFileName(USERSFILENAME) {};   // konstruktor nadaje nazwe pliku z uzytkownikami
+    void saveUsersToFile(vector <User> users);                           // zapisanie uzytkownikow do pliku tekstowego
+    vector <User> addUsersFromFile();                                    // wczytanie uzytkownikow z pliku tekstowego do vectora
 };
 
 #endif // USERSFILE_H

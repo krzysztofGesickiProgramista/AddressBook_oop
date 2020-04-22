@@ -1,10 +1,7 @@
 #include "UsersFile.h"
 
-UsersFile::UsersFile() {
-    usersFileName = "users.txt";
-}
-
 void UsersFile::saveUsersToFile(vector <User> users) {
+    fstream textFile;
     int temporaryPosition = users.back().getId() - 1;               // -1 bo odwoluje sie do id a potrzebuje pozycje (id numerowane od 1 a pozycja od 0)
     textFile.open(usersFileName.c_str(), ios::out|ios::app);
     if (textFile.good() == false) {
@@ -17,12 +14,13 @@ void UsersFile::saveUsersToFile(vector <User> users) {
     textFile << users[temporaryPosition].getPassword() << "|" << endl;
     textFile.close();
     cout << "Uzytkownik dodany! ";
-    cout << endl << "(wcisnij enter aby wrocic do menu glownego)";
+    cout << endl << "(wcisnij enter aby wrocic do menu glownego)" ;
     cin.sync();
     cin.get();
 }
 
 vector <User> UsersFile::addUsersFromFile() {
+    fstream textFile;
     textFile.open(usersFileName.c_str(), ios::in);
     if (textFile.good() == false) {
         ofstream temp (usersFileName.c_str());
