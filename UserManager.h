@@ -13,7 +13,7 @@ using namespace std;
 class UserManager {
 
     vector <User> users;
-
+    int loggedUserId;
     User getNewUser();                               // pobranie danych nowego uzytkownika
     bool checkExistingNames(string name);            // sprawdzenie czy istnieje juz taka nazwa uzytkownika
     int getNewUserId();                              // pobranie danych nowego uzytkownika
@@ -21,11 +21,11 @@ class UserManager {
 
 public:
     UserManager(string usersFileName) : userFile(usersFileName) {};
-    void signIn();
+    void signIn();                                   // rejestrowanie uzytkownika
+    int logIn();                                     // logowanie uzytkownika
     void loadUsersTextFile();                        // wczytaj uzytkownikow z pliku do wektora
 
-    //void logIn();
-    //void changePassword();
+    //void changePassword();                         // do zrobienia!!!
 
 };
 
