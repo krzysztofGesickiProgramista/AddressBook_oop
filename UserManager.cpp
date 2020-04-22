@@ -46,3 +46,31 @@ void UserManager::loadUsersTextFile() {                // wczytanie uzytkownikow
     users = userFile.addUsersFromFile();
 }
 
+int UserManager::logIn() {                             // logowanie uzytkownika
+    string name, password;
+    int usersNumber = users.size();
+    cout << "Podaj nazwe uzytkownika: ";
+    //cin.ignore();
+    getline(cin, name);
+    int i = 0;
+    while (i < usersNumber) {
+        if (users[i].getName() == name) {
+            for (int attempt = 0; attempt < 3; attempt++) {
+                cout << "Podaj haslo: ";
+                getline(cin, password);
+                if (users[i].getPassword() == password) {
+                    cout << "Zalogowales sie" << endl;
+                    Sleep (1000);
+                    return users[i].getId();
+                }
+            }
+            cout << "Podales 3 razy bledne haslo. Sprobuj ponownie.";
+                 Sleep(3000);
+            return 0;
+        }
+        i++;
+    }
+    cout << "Nie ma takiego uzytkownika!";
+    Sleep(1500);
+    return 0;
+}
