@@ -9,7 +9,7 @@ int AddressBook::logIn() {
 }
 
 void AddressBook::start() {
-    int choice;
+    char choice;
     while (true){
         if (logged) {
             AuxiliaryMethods::showMenuLogged();
@@ -24,7 +24,7 @@ void AddressBook::start() {
     }
 }
 
-void AddressBook::controlUnLoggedOption(int choice) {
+void AddressBook::controlUnLoggedOption(char choice) {
     int currentUserId;
     switch (choice) {
         case LOGIN:
@@ -36,7 +36,7 @@ void AddressBook::controlUnLoggedOption(int choice) {
             }
             break;
         case REGISTER:
-            cout << "register";
+            signIn();
             break;
         case EXIT:
             cout << "Wylaczasz program";
@@ -45,11 +45,12 @@ void AddressBook::controlUnLoggedOption(int choice) {
             break;
         default:
             cout << "Wybrano niepoprawna opcje! " << endl;
+            Sleep(2000);
             break;
     }
 }
 
-void AddressBook::controlLoggedOption(int choice) {
+void AddressBook::controlLoggedOption(char choice) {
     switch (choice) {
         case ADD_CONTACT:
             cout << "ADD_CONTACT";

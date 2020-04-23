@@ -15,20 +15,20 @@ private:
     bool logged = false;                    // zmienna do sterowania menu
 
     enum unLoggedOption{                    // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
-    LOGIN = 1,
-    REGISTER = 2,
-    EXIT = 9
+    LOGIN = '1',
+    REGISTER = '2',
+    EXIT = '9'
     };
 
     enum loggedOption{
-    ADD_CONTACT = 1,
-    SEARCH_WITH_NAME = 2,
-    SEARCH_WITH_SURNAME = 3,
-    SHOW_ALL = 4,
-    DELETE_CONTACT = 5,
-    EDIT_CONTACT = 6,
-    CHANGE_PASSWORD = 7,
-    SIGN_OUT = 8,
+    ADD_CONTACT = '1',
+    SEARCH_WITH_NAME = '2',
+    SEARCH_WITH_SURNAME = '3',
+    SHOW_ALL = '4',
+    DELETE_CONTACT = '5',
+    EDIT_CONTACT = '6',
+    CHANGE_PASSWORD = '7',
+    SIGN_OUT = '8',
     };
 
 public:
@@ -38,8 +38,8 @@ public:
     void signIn();                                                       // rejestracja uzytkownika
     int logIn();                                                         // logowanie uzytkownika
     void start();                                                        // wystartowanie programu
-    void controlUnLoggedOption(int choice);                              // sterowanie menu niezalogowanego uzytkownika
-    void controlLoggedOption(int choice);                                // sterowanie menu zalogowanego uzytkownika
+    void controlUnLoggedOption(char choice);                             // sterowanie menu niezalogowanego uzytkownika
+    void controlLoggedOption(char choice);                               // sterowanie menu zalogowanego uzytkownika
 
 };
 
