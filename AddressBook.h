@@ -5,16 +5,47 @@
 
 #include "UserManager.h"
 
+#include "AuxiliaryMethods.h"
+
 using namespace std;
 
 class AddressBook {
-    UserManager userManager;                                             // obiekt klasy UserManager do wykonywania operacji
+private:
+    UserManager userManager;
+    bool logged = false;                                             // obiekt klasy UserManager do wykonywania operacji
+//    typedef enum loggedOption{
+//        LOGIN,
+//        REGISTER,
+//        EXIT
+//        } loggedOption;
+
+    enum unLoggedOption{              // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
+    LOGIN = 1,
+    REGISTER = 2,
+    EXIT = 9
+    };
+
+    enum loggedOption{
+    ADD_CONTACT = 1,
+    SEARCH_WITH_NAME = 2,
+    SEARCH_WITH_SURNAME = 3,
+    SHOW_ALL = 4,
+    DELETE_CONTACT = 5,
+    EDIT_CONTACT = 6,
+    CHANGE_PASSWORD = 7,
+    SIGN_OUT = 8,
+    };
+
 public:
-    void signIn();                                                       // rejestracja uzytkownika
-    void logIn();                                                        // logowanie uzytkownika
     AddressBook(string usersFileName) : userManager(usersFileName) {     // konstruktor do wczytania uzytkownikow z pliku oraz nadania nazwy pliku
-        userManager.loadUsersTextFile();
+    userManager.loadUsersTextFile();
     }
+    void signIn();                                                       // rejestracja uzytkownika
+    int logIn();                                                        // logowanie uzytkownika
+    void start();
+    void controlUnLoggedOption(int choice);
+    void controlLoggedOption(int choice);
+
 };
 
 #endif // ADDRESSBOOK_H
