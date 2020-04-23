@@ -1,12 +1,12 @@
 #ifndef USERMANAGER_H
 #define USERMANAGER_H
 
+#include "User.h"
+#include "UsersFile.h"
+
 #include <iostream>
 #include <vector>
 #include <windows.h>
-
-#include "User.h"
-#include "UsersFile.h"
 
 using namespace std;
 

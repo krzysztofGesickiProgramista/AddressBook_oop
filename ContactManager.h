@@ -1,10 +1,10 @@
 #ifndef CONTACTMANAGER_H
 #define CONTACTMANAGER_H
 
-#include <iostream>
-
 #include "Contact.h"
 #include "AddressesFile.h"
+
+#include <iostream>
 
 using namespace std;
 
@@ -14,6 +14,7 @@ class ContactManager {
     AddressesFile addressesFile;
 
 public:
+    ContactManager(string addressesFileName) : addressesFile(addressesFileName) {}
     void addNewContact(int currentUserId);                // dodaj nowego adresata
     Contact getNewContact(int currentUserId);             // pobierz dane nowego adresata
     int getNewContactId();                                // pobierz id ostatniego adresata

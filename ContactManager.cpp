@@ -41,6 +41,8 @@ Contact ContactManager::getNewContact(int currentUserId) {
     return givenContact;
 }
 
+
+
 //void ContactManager::loadAddressesTextFile() {             // wczytanie uzytkownikow z pliku do vectora
 //    contacts = addressesFile.addUsersFromFile();
 //}

@@ -1,6 +1,6 @@
 #include "AddressBook.h"
 
-void AddressBook::signIn() {                   // rejestracja uzytkownika
+void AddressBook::signIn() {                                 // rejestracja uzytkownika
     userManager.signIn();
 }
 

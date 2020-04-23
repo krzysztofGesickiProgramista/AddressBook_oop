@@ -1,12 +1,11 @@
 #ifndef ADDRESSBOOK_H
 #define ADDRESSBOOK_H
 
-#include <iostream>
-
 #include "UserManager.h"
 #include "ContactManager.h"
-
 #include "AuxiliaryMethods.h"
+
+#include <iostream>
 
 using namespace std;
 
@@ -15,10 +14,10 @@ class AddressBook {
 private:
     UserManager userManager;                // obiekt klasy UserManager do wykonywania operacji
     ContactManager contactManager;          // obiekt klasy ContactManager do wykonywania operacji
-    bool logged = false;                    // zmienna do sterowania menu
-    int currentUserId = 0;
+    bool logged;                            // zmienna do sterowania menu
+    int currentUserId;
 
-    enum unLoggedOption{                    // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
+    enum unLoggedOption{                    // TODO wrzucic to pozniej w oddzielny plik naglowkowy albo klase
     LOGIN = '1',
     REGISTER = '2',
     EXIT = '9'
@@ -36,9 +35,11 @@ private:
     };
 
 public:
-    AddressBook(string usersFileName) : userManager(usersFileName) {     // konstruktor do wczytania uzytkownikow z pliku oraz nadania nazwy pliku
+    AddressBook(string usersFileName, string addressesFileName) : userManager(usersFileName), contactManager(addressesFileName) {     // konstruktor do wczytania uzytkownikow z pliku oraz nadania nazwy pliku
     userManager.loadUsersTextFile();
     //contactManager.loadAddressesTextFile();
+    logged = false;
+    currentUserId = 0;
     }
     void start();                                                        // wystartowanie programu
 
