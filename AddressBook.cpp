@@ -8,6 +8,10 @@ int AddressBook::logIn() {
     return userManager.logIn();                // logowanie uzytkownika
 }
 
+void AddressBook::addNewContact(int currenUserId) {
+    contactManager.addNewContact(currenUserId);          // dodawanie nowego adresata
+}
+
 void AddressBook::start() {
     char choice;
     while (true){
@@ -25,14 +29,14 @@ void AddressBook::start() {
 }
 
 void AddressBook::controlUnLoggedOption(char choice) {
-    int currentUserId;
     switch (choice) {
         case LOGIN:
-            currentUserId = logIn();
-            if (currentUserId != 0) {     // jezeli jest rozne od zera to zalogowany
+            currentUserId = logIn();                         // zwraca ID zalogowanego uzytkownika
+            if (currentUserId != 0) {                        // jezeli jest rozne od zera to zalogowany
                 logged = true;
                 // TODO
                 // ustawic ID uzytkownika w UserManager
+                //ContactManager contactManager(currentUserId);
             }
             break;
         case REGISTER:
@@ -53,6 +57,7 @@ void AddressBook::controlUnLoggedOption(char choice) {
 void AddressBook::controlLoggedOption(char choice) {
     switch (choice) {
         case ADD_CONTACT:
+            addNewContact(currentUserId);
             cout << "ADD_CONTACT";
             break;
         case SEARCH_WITH_NAME:
@@ -80,6 +85,7 @@ void AddressBook::controlLoggedOption(char choice) {
             break;
         default:
             cout << "Wybrano niepoprawna opcje! " << endl;
+            Sleep(2000);
             break;
     }
 }

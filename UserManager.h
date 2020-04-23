@@ -18,6 +18,7 @@ class UserManager {
     bool checkExistingNames(string name);            // sprawdzenie czy istnieje juz taka nazwa uzytkownika
     int getNewUserId();                              // pobranie danych nowego uzytkownika
     UsersFile userFile;                              // stworz obiekt klasy UsersFile zeby wykonywac na nim operacje
+    int currentUserId;
 
 public:
     UserManager(string usersFileName) : userFile(usersFileName) {};

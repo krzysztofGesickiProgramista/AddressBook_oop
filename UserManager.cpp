@@ -74,3 +74,4 @@ int UserManager::logIn() {                             // logowanie uzytkownika
     Sleep(1500);
     return 0;
 }
+

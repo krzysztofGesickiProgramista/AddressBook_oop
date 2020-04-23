@@ -4,15 +4,19 @@
 #include <iostream>
 
 #include "UserManager.h"
+#include "ContactManager.h"
 
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
+
 class AddressBook {
 private:
     UserManager userManager;                // obiekt klasy UserManager do wykonywania operacji
+    ContactManager contactManager;          // obiekt klasy ContactManager do wykonywania operacji
     bool logged = false;                    // zmienna do sterowania menu
+    int currentUserId = 0;
 
     enum unLoggedOption{                    // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
     LOGIN = '1',
@@ -34,12 +38,17 @@ private:
 public:
     AddressBook(string usersFileName) : userManager(usersFileName) {     // konstruktor do wczytania uzytkownikow z pliku oraz nadania nazwy pliku
     userManager.loadUsersTextFile();
+    //contactManager.loadAddressesTextFile();
     }
+    void start();                                                        // wystartowanie programu
+
     void signIn();                                                       // rejestracja uzytkownika
     int logIn();                                                         // logowanie uzytkownika
-    void start();                                                        // wystartowanie programu
+
     void controlUnLoggedOption(char choice);                             // sterowanie menu niezalogowanego uzytkownika
     void controlLoggedOption(char choice);                               // sterowanie menu zalogowanego uzytkownika
+
+    void addNewContact(int currenUserId);
 
 };
 
