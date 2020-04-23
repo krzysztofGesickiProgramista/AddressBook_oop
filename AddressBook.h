@@ -11,15 +11,10 @@ using namespace std;
 
 class AddressBook {
 private:
-    UserManager userManager;
-    bool logged = false;                                             // obiekt klasy UserManager do wykonywania operacji
-//    typedef enum loggedOption{
-//        LOGIN,
-//        REGISTER,
-//        EXIT
-//        } loggedOption;
+    UserManager userManager;                // obiekt klasy UserManager do wykonywania operacji
+    bool logged = false;                    // zmienna do sterowania menu
 
-    enum unLoggedOption{              // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
+    enum unLoggedOption{                    // wrzucic to pozniej w oddzielny plik naglowkowy albo klase
     LOGIN = 1,
     REGISTER = 2,
     EXIT = 9
@@ -41,10 +36,10 @@ public:
     userManager.loadUsersTextFile();
     }
     void signIn();                                                       // rejestracja uzytkownika
-    int logIn();                                                        // logowanie uzytkownika
-    void start();
-    void controlUnLoggedOption(int choice);
-    void controlLoggedOption(int choice);
+    int logIn();                                                         // logowanie uzytkownika
+    void start();                                                        // wystartowanie programu
+    void controlUnLoggedOption(int choice);                              // sterowanie menu niezalogowanego uzytkownika
+    void controlLoggedOption(int choice);                                // sterowanie menu zalogowanego uzytkownika
 
 };
 

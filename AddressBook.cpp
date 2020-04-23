@@ -1,6 +1,6 @@
 #include "AddressBook.h"
 
-void AddressBook::signIn() {             // rejestracja uzytkownika
+void AddressBook::signIn() {                   // rejestracja uzytkownika
     userManager.signIn();
 }
 
@@ -21,7 +21,6 @@ void AddressBook::start() {
             cin >> choice;
             controlUnLoggedOption(choice);
         }
-        //Sleep (5000);
     }
 }
 
