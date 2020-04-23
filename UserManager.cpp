@@ -11,7 +11,7 @@ User UserManager::getNewUser() {                       // pobranie danych nowego
     string name, password;
     do {
         cin.ignore();
-        cout << "Podaj nazwe uzytkownika: ";
+        cout << "Podaj nazwe nowego uzytkownika: ";
         getline(cin, name);
     }
     while (checkExistingNames(name) == true);
