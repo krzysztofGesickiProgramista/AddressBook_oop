@@ -40,6 +40,11 @@ void AddressBook::searchContactBySurname() {                 // szukanie adresat
     contactManager.searchContactBySurname();
 }
 
+void AddressBook::showContacts() {                           // pokaz wszystkich adresatow
+    contactManager.showContacts();
+}
+
+
 
 
 
@@ -79,7 +84,7 @@ void AddressBook::controlLoggedOption(char choice) {
             searchContactBySurname();
             break;
         case SHOW_ALL:
-            cout << "SHOW_ALL";
+            showContacts();
             break;
         case DELETE_CONTACT:
             cout << "DELETE_CONTACT";

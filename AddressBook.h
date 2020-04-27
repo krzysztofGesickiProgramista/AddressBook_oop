@@ -52,6 +52,7 @@ public:
     void addNewContact(int currenUserId);                         // dodanie nowego adresata
     void searchContactByName();                                   // wyszukiwanie adresata po imieniu
     void searchContactBySurname();                                // wyszukiwanie adresata po imieniu
+    void showContacts();                                          // pokaz wszystkich adresatow
 
 
 };

@@ -21,6 +21,7 @@ public:
     void loadAddressesTextFile(int currentUserId);        // wczytaj adresatow z pliku do wektora
     void searchContactByName();                           // szukaj adresata po imieniu
     void searchContactBySurname();                        // szukaj adresata po nazwisku
+    void showContacts();                                  // pokaz wszystkie kontakty
 };
 
 #endif // CONTACTMANAGER_H
