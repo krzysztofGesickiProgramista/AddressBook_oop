@@ -24,10 +24,13 @@ int AddressBook::logIn() {                                   // logowanie uzytko
     return userManager.logIn();
 }
 
-void AddressBook::addNewContact(int currenUserId) {          // dodawanie nowego adresata
-    contactManager.addNewContact(currenUserId);
+void AddressBook::changePassword(int currentUserId) {        // zmiana hasla uzytkownika
+    userManager.changePassword(currentUserId);
 }
 
+void AddressBook::addNewContact(int currentUserId) {         // dodawanie nowego adresata
+    contactManager.addNewContact(currentUserId);
+}
 
 void AddressBook::controlUnLoggedOption(char choice) {
     switch (choice) {
@@ -77,6 +80,7 @@ void AddressBook::controlLoggedOption(char choice) {
             cout << "EDIT_CONTACT";
             break;
         case CHANGE_PASSWORD:
+            changePassword(currentUserId);
             cout << "CHANGE_PASSWORD";
             break;
         case SIGN_OUT:

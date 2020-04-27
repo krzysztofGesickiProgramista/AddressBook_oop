@@ -45,11 +45,13 @@ public:
 
     void signIn();                                                       // rejestracja uzytkownika
     int logIn();                                                         // logowanie uzytkownika
+    void changePassword(int currentUserId);                               // zmiana hasla uzytkownika
 
     void controlUnLoggedOption(char choice);                             // sterowanie menu niezalogowanego uzytkownika
     void controlLoggedOption(char choice);                               // sterowanie menu zalogowanego uzytkownika
 
-    void addNewContact(int currenUserId);
+    void addNewContact(int currenUserId);                                // dodanie nowego adresata
+
 
 };
 

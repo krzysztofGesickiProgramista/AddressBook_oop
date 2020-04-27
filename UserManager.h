@@ -25,8 +25,7 @@ public:
     void signIn();                                   // rejestrowanie uzytkownika
     int logIn();                                     // logowanie uzytkownika
     void loadUsersTextFile();                        // wczytaj uzytkownikow z pliku do wektora
-
-    //void changePassword();                         // do zrobienia!!!
+    void changePassword(int currentUserId);          // zmiana hasla uzytkownika
 
 };
 
