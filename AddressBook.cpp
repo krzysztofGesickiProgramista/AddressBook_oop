@@ -1,14 +1,6 @@
 #include "AddressBook.h"
 
-void AddressBook::signIn() {                   // rejestracja uzytkownika
-    userManager.signIn();
-}
-
-int AddressBook::logIn() {
-    return userManager.logIn();                // logowanie uzytkownika
-}
-
-void AddressBook::start() {
+void AddressBook::start() {                                  // startowanie programu
     char choice;
     while (true){
         if (logged) {
@@ -24,15 +16,49 @@ void AddressBook::start() {
     }
 }
 
+void AddressBook::signIn() {                                 // rejestracja uzytkownika
+    userManager.signIn();
+}
+
+int AddressBook::logIn() {                                   // logowanie uzytkownika
+    return userManager.logIn();
+}
+
+void AddressBook::changePassword(int currentUserId) {        // zmiana hasla uzytkownika
+    userManager.changePassword(currentUserId);
+}
+
+void AddressBook::addNewContact(int currentUserId) {         // dodawanie nowego adresata
+    contactManager.addNewContact(currentUserId);
+}
+
+void AddressBook::searchContactByName() {                    // szukanie adresata po imieniu
+    contactManager.searchContactByName();
+}
+
+void AddressBook::searchContactBySurname() {                 // szukanie adresata po nazwisku
+    contactManager.searchContactBySurname();
+}
+
+void AddressBook::showContacts() {                           // pokaz wszystkich adresatow
+    contactManager.showContacts();
+}
+
+void AddressBook::deleteContact() {                          // usun adresata
+    contactManager.deleteContact();
+}
+
+void AddressBook::editContact() {                            // edycja adresata
+    contactManager.editContact();
+}
+
 void AddressBook::controlUnLoggedOption(char choice) {
-    int currentUserId;
     switch (choice) {
         case LOGIN:
-            currentUserId = logIn();
-            if (currentUserId != 0) {     // jezeli jest rozne od zera to zalogowany
+            currentUserId = logIn();                                    // zwraca ID zalogowanego uzytkownika
+            if (currentUserId != 0) {                                   // jezeli jest rozne od zera to zalogowany
                 logged = true;
-                // TODO
-                // ustawic ID uzytkownika w UserManager
+                contactManager.loadAddressesTextFile(currentUserId);    // zaladuj adresatow z pliku
             }
             break;
         case REGISTER:
@@ -53,25 +79,25 @@ void AddressBook::controlUnLoggedOption(char choice) {
 void AddressBook::controlLoggedOption(char choice) {
     switch (choice) {
         case ADD_CONTACT:
-            cout << "ADD_CONTACT";
+            addNewContact(currentUserId);
             break;
         case SEARCH_WITH_NAME:
-            cout << "SEARCH_WITH_NAME";
+            searchContactByName();
             break;
         case SEARCH_WITH_SURNAME:
-            cout << "SEARCH_WITH_SURNAME";
+            searchContactBySurname();
             break;
         case SHOW_ALL:
-            cout << "SHOW_ALL";
+            showContacts();
             break;
         case DELETE_CONTACT:
-            cout << "DELETE_CONTACT";
+            deleteContact();
             break;
         case EDIT_CONTACT:
-            cout << "EDIT_CONTACT";
+            editContact();
             break;
         case CHANGE_PASSWORD:
-            cout << "CHANGE_PASSWORD";
+            changePassword(currentUserId);
             break;
         case SIGN_OUT:
             logged = false;             // wyzerowac id uzytkownika
@@ -80,6 +106,7 @@ void AddressBook::controlLoggedOption(char choice) {
             break;
         default:
             cout << "Wybrano niepoprawna opcje! " << endl;
+            Sleep(2000);
             break;
     }
 }

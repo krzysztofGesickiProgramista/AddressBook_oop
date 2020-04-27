@@ -3,7 +3,7 @@
 void UserManager::signIn() {                           // rejestracja uzytkownika
     User temporaryUser = getNewUser();                 // dodaj nowego uzytkownika do obiektu
     users.push_back(temporaryUser);                    // dodaj obiekt do vectora
-    userFile.saveUsersToFile(users);                   // dodaj vector z uzytkownikami do pliku tekstowego
+    userFile.saveLastUserToFile(users);                // dodaj vector z uzytkownikami do pliku tekstowego
 }
 
 User UserManager::getNewUser() {                       // pobranie danych nowego uzytkownika
@@ -73,4 +73,18 @@ int UserManager::logIn() {                             // logowanie uzytkownika
     cout << "Nie ma takiego uzytkownika!";
     Sleep(1500);
     return 0;
+}
+
+void UserManager::changePassword(int currentUserId) {
+    string password;
+    cout<<"Podaj nowe haslo: ";
+    cin.ignore();
+    getline(cin, password);
+    int range = users.size();
+    for (int i = 0; i < range; i++) {
+        if (users[i].getId() == currentUserId) {
+            users[i].setPassword(password);
+        }
+    }
+    userFile.saveUsersToFile(users);
 }

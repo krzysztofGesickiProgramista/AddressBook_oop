@@ -6,13 +6,8 @@ using namespace std;
 
 int main()
 {
-    AddressBook addressBook("users.txt");      //tworzymy obiekt addressBook z klasy AddressBook
+    AddressBook addressBook("users.txt", "addresses.txt");       //tworzymy obiekt addressBook z klasy AddressBook
     addressBook.start();
-
-    //addressBook.signIn();                    //dzialania na obiekcie addressBook, czyli rejestracja itd.
-    //addressBook.signIn();                    //dzialania na obiekcie addressBook, czyli rejestracja itd.
-    //addressBook.signIn();                    //dzialania na obiekcie addressBook, czyli rejestracja itd.
-    //addressBook.logIn();                     //dzialania na obiekcie addressBook, czyli logowanie itd.
 
     return 0;
 }

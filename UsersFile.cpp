@@ -1,6 +1,6 @@
 #include "UsersFile.h"
 
-void UsersFile::saveUsersToFile(vector <User> users) {
+void UsersFile::saveLastUserToFile(vector <User> users) {
     fstream textFile;
     int temporaryPosition = users.back().getId() - 1;               // -1 bo odwoluje sie do id a potrzebuje pozycje (id numerowane od 1 a pozycja od 0)
     textFile.open(usersFileName.c_str(), ios::out|ios::app);
@@ -46,3 +46,23 @@ vector <User> UsersFile::addUsersFromFile() {
     return temporaryUsers;
 }
 
+void UsersFile::saveUsersToFile(vector <User> users) {
+    fstream textFile;
+    textFile.open(usersFileName.c_str(), ios::out);
+    if (textFile.good() == false) {
+        cout << "Nie udalo sie otworzyc pliku z Kontaktami!";
+        Sleep(2000);
+        exit(0);
+    }
+    int range = users.size();
+    for (int i = 0; i < range; i++) {
+        textFile << users[i].getId() << "|";
+        textFile << users[i].getName() << "|";
+        textFile << users[i].getPassword() << "|" << endl;
+    }
+    textFile.close();
+    cout << "Haslo zostalo zmienione! ";
+    cout << endl << "(wcisnij enter aby wrocic do menu glownego)";
+    cin.sync();
+    cin.get();
+}
