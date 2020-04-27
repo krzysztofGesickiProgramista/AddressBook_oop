@@ -32,14 +32,19 @@ void AddressBook::addNewContact(int currentUserId) {         // dodawanie nowego
     contactManager.addNewContact(currentUserId);
 }
 
+void AddressBook::searchContactByName() {                    // szukanie adresata po imieniu
+    contactManager.searchContactByName();
+}
+
+
+
+
 void AddressBook::controlUnLoggedOption(char choice) {
     switch (choice) {
         case LOGIN:
-            currentUserId = logIn();                         // zwraca ID zalogowanego uzytkownika
-            if (currentUserId != 0) {                        // jezeli jest rozne od zera to zalogowany
+            currentUserId = logIn();                                    // zwraca ID zalogowanego uzytkownika
+            if (currentUserId != 0) {                                   // jezeli jest rozne od zera to zalogowany
                 logged = true;
-                // TODO
-                // ustawic ID uzytkownika w UserManager
                 contactManager.loadAddressesTextFile(currentUserId);    // zaladuj adresatow z pliku
             }
             break;
@@ -65,6 +70,7 @@ void AddressBook::controlLoggedOption(char choice) {
             cout << "ADD_CONTACT";
             break;
         case SEARCH_WITH_NAME:
+            searchContactByName();
             cout << "SEARCH_WITH_NAME";
             break;
         case SEARCH_WITH_SURNAME:

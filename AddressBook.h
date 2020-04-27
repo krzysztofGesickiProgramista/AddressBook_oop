@@ -37,7 +37,6 @@ private:
 public:
     AddressBook(string usersFileName, string addressesFileName) : userManager(usersFileName), contactManager(addressesFileName) {     // konstruktor do wczytania uzytkownikow z pliku oraz nadania nazwy pliku
     userManager.loadUsersTextFile();
-    //contactManager.loadAddressesTextFile();
     logged = false;
     currentUserId = 0;
     }
@@ -45,12 +44,13 @@ public:
 
     void signIn();                                                       // rejestracja uzytkownika
     int logIn();                                                         // logowanie uzytkownika
-    void changePassword(int currentUserId);                               // zmiana hasla uzytkownika
+    void changePassword(int currentUserId);                              // zmiana hasla uzytkownika
 
     void controlUnLoggedOption(char choice);                             // sterowanie menu niezalogowanego uzytkownika
     void controlLoggedOption(char choice);                               // sterowanie menu zalogowanego uzytkownika
 
     void addNewContact(int currenUserId);                                // dodanie nowego adresata
+    void searchContactByName();                                          // wyszukiwanie adresata po imieniu
 
 
 };

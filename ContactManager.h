@@ -18,7 +18,8 @@ public:
     void addNewContact(int currentUserId);                // dodaj nowego adresata
     Contact getNewContact(int currentUserId);             // pobierz dane nowego adresata
     int getNewContactId();                                // pobierz id ostatniego adresata
-    void loadAddressesTextFile(int currentUserId);         // wczytaj adresatow z pliku do wektora
+    void loadAddressesTextFile(int currentUserId);        // wczytaj adresatow z pliku do wektora
+    void searchContactByName();                           // szukaj adresata po imieniu
 };
 
 #endif // CONTACTMANAGER_H

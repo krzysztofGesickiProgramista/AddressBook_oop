@@ -44,3 +44,25 @@ Contact ContactManager::getNewContact(int currentUserId) {           // pobranie
 void ContactManager::loadAddressesTextFile(int currentUserId) {       // wczytanie uzytkownikow z pliku do vectora
     contacts = addressesFile.addAddressesFromFile(currentUserId);
 }
+
+void ContactManager::searchContactByName() {
+    string searchFor;
+    cout << "Podaj szukana fraze (imie): ";
+    cin.ignore();
+    getline(cin, searchFor);
+    int range = contacts.size();
+    for (int i = 0; i < range; i++) {
+        if (searchFor == contacts[i].getName()) {
+            cout << "ID kontaktu: " << contacts[i].getId() << endl;
+            cout << "Imie: " << contacts[i].getName() << endl;
+            cout << "Nazwisko: " << contacts[i].getSurname() << endl;
+            cout << "Numer telefonu: " << contacts[i].getPhoneNumber() << endl;
+            cout << "Adres e-mail: " << contacts[i].getEmail() << endl;
+            cout << "Adres: " << contacts[i].getAddress() << endl;
+            cout << endl;
+        }
+    }
+    cout << endl << "(wcisnij enter aby wrocic do menu glownego)";
+    cin.sync();
+    cin.get();
+}
