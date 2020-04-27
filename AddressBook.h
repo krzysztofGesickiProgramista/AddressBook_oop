@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 class AddressBook {
 private:
     UserManager userManager;                // obiekt klasy UserManager do wykonywania operacji
@@ -53,7 +52,8 @@ public:
     void searchContactByName();                                   // wyszukiwanie adresata po imieniu
     void searchContactBySurname();                                // wyszukiwanie adresata po imieniu
     void showContacts();                                          // pokaz wszystkich adresatow
-
+    void deleteContact();                                         // usun adresata
+    void editContact();                                           // edycja adresata
 
 };
 

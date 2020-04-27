@@ -15,8 +15,9 @@ class AddressesFile {
     const string addressesFileName;
 public:
     AddressesFile(string addressesFileName) : addressesFileName(addressesFileName) {};
-    void saveContactsToFile(vector <Contact> contacts);             // zapisanie adresatow do pliku tekstowego
+    void saveLastContactToFile(vector <Contact> contacts);          // zapisanie ostatniego adresata do pliku tekstowego
     vector <Contact> addAddressesFromFile(int currentUserId);       // wczytanie adresatow z pliku tekstowego do vectora
+    void saveContactsToFile(vector <Contact> contacts);             // zapisanie wszystkich adresatow do pliku tekstowego
 };
 
 

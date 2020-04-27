@@ -44,9 +44,13 @@ void AddressBook::showContacts() {                           // pokaz wszystkich
     contactManager.showContacts();
 }
 
+void AddressBook::deleteContact() {                          // usun adresata
+    contactManager.deleteContact();
+}
 
-
-
+void AddressBook::editContact() {                            // edycja adresata
+    contactManager.editContact();
+}
 
 void AddressBook::controlUnLoggedOption(char choice) {
     switch (choice) {
@@ -87,14 +91,13 @@ void AddressBook::controlLoggedOption(char choice) {
             showContacts();
             break;
         case DELETE_CONTACT:
-            cout << "DELETE_CONTACT";
+            deleteContact();
             break;
         case EDIT_CONTACT:
-            cout << "EDIT_CONTACT";
+            editContact();
             break;
         case CHANGE_PASSWORD:
             changePassword(currentUserId);
-            cout << "CHANGE_PASSWORD";
             break;
         case SIGN_OUT:
             logged = false;             // wyzerowac id uzytkownika

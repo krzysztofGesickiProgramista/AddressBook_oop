@@ -3,7 +3,7 @@
 void ContactManager::addNewContact(int currentUserId) {              // dodaj nowego adresata
     Contact temporaryContact = getNewContact(currentUserId);    // dodaj nowy kontakt do obiektu
     contacts.push_back(temporaryContact);                       // dodaj obiekt do vectora
-    addressesFile.saveContactsToFile(contacts);                 // dodaj vector z kontaktami do pliku tekstowego
+    addressesFile.saveLastContactToFile(contacts);              // dodaj vector z kontaktami do pliku tekstowego
 }
 
 int ContactManager::getNewContactId() {                              // wyciagniecie ostatniego id z vectora
@@ -41,11 +41,11 @@ Contact ContactManager::getNewContact(int currentUserId) {           // pobranie
     return givenContact;
 }
 
-void ContactManager::loadAddressesTextFile(int currentUserId) {       // wczytanie uzytkownikow z pliku do vectora
+void ContactManager::loadAddressesTextFile(int currentUserId) {      // wczytanie uzytkownikow z pliku do vectora
     contacts = addressesFile.addAddressesFromFile(currentUserId);
 }
 
-void ContactManager::searchContactByName() {
+void ContactManager::searchContactByName() {                         // szukaj adresata po imieniu
     string searchFor;
     cout << "Podaj szukana fraze (imie): ";
     cin.ignore();
@@ -67,7 +67,7 @@ void ContactManager::searchContactByName() {
     cin.get();
 }
 
-void ContactManager::searchContactBySurname() {
+void ContactManager::searchContactBySurname() {                      // szukaj adresata po nazwisku
     string searchFor;
     cout << "Podaj szukana fraze (nazwisko): ";
     cin.ignore();
@@ -89,7 +89,7 @@ void ContactManager::searchContactBySurname() {
     cin.get();
 }
 
-void ContactManager::showContacts() {
+void ContactManager::showContacts() {                                // pokaz wszystkie kontakty
     cout << "Lista zapisanych kontaktow: " << endl << endl;
     int range = contacts.size();
     for (int i = 0; i < range; i++) {
@@ -104,4 +104,147 @@ void ContactManager::showContacts() {
     cout << endl << "(wcisnij enter aby wrocic do menu glownego)";
     cin.sync();
     cin.get();
+}
+
+void ContactManager::deleteContact() {                               // usun adresata
+    int id;
+    int vectorSize = contacts.size();
+    system("cls");
+    cout << "Podaj ID kontaktu do usuniecia: ";
+    while(!(cin >> id))
+    {
+        cout << "Podano niepoprawny nr ID!";
+        cin.clear();
+        cin.sync();
+        Sleep(2000);
+        return;
+    }
+    char choice;
+    while (true) {
+        cout << "Na pewno chcesz usunac kontakt o numerze ID: " << id << "? (t/n) ";
+        cin >> choice;
+        if (choice == 'n') {
+            return;
+        }
+        else if (choice == 't') {
+            int position = -1;
+            for (int i = 0; i < vectorSize; i++) {
+                if (contacts[i].getId() == id) {
+                    position = i;
+                    break;
+                }
+            }
+            if (position == -1) {
+                cout << "Nie ma takiego kontaktu!";
+                Sleep(2000);
+                return;
+            }
+            contacts.erase(contacts.begin()+position);
+            addressesFile.saveContactsToFile(contacts);
+            return;
+        } else {
+            cout << "Wybierz poprawna opcje!" << endl;
+            continue;
+        }
+    }
+}
+
+void ContactManager::editContact() {                                 // edytuj adresata
+    int id;
+    system("cls");
+    cout << "Podaj ID adresata do edycji: ";
+    while(!(cin >> id))
+    {
+        cout << "Podano niepoprawny nr ID!";
+        cin.clear();
+        cin.sync();
+        Sleep(2000);
+        return;
+    }
+    int vectorSize = contacts.size();
+    int position = -1;
+    for (int i = 0; i < vectorSize; i++) {
+        if (contacts[i].getId() == id) {
+            position = i;
+            break;
+        }
+    }
+    if (position == -1) {
+        cout << "Nie ma takiego kontaktu!";
+        Sleep(2000);
+        return;
+    }
+    cout << "Edytujesz ponizszy kontakt:" << endl;
+    cout << "ID kontaktu: " << contacts[position].getId() << endl;
+    cout << "Imie: " << contacts[position].getName() << endl;
+    cout << "Nazwisko: " << contacts[position].getSurname() << endl;
+    cout << "Numer telefonu: " << contacts[position].getPhoneNumber() << endl;
+    cout << "Adres e-mail: " << contacts[position].getEmail() << endl;
+    cout << "Adres: " << contacts[position].getAddress() << endl;
+    cout << endl;
+    cout << "Co chcesz edytowac?" << endl;
+
+    cout << "1-imie" << endl;
+    cout << "2-nazwisko" << endl;
+    cout << "3-numer telefonu" << endl;
+    cout << "4-email" << endl;
+    cout << "5-adres" << endl;
+    cout << "6-powrot do menu" << endl;
+
+    int choice;
+    cin >> choice;
+    string newValue;
+    switch (choice) {
+    case 1:
+        cout << "Nowe imie: ";
+        cin.ignore();
+        getline(cin,newValue);
+        contacts[position].setName(newValue);
+        addressesFile.saveContactsToFile(contacts);
+        cout << "Zapisano zmiany!";
+        Sleep(1500);
+        break;
+    case 2:
+        cout << "Nowe nazwisko: ";
+        cin.ignore();
+        getline(cin,newValue);
+        contacts[position].setSurname(newValue);
+        addressesFile.saveContactsToFile(contacts);
+        cout << "Zapisano zmiany!";
+        Sleep(1500);
+        break;
+    case 3:
+        cout << "Nowy numer telefonu: ";
+        cin.ignore();
+        getline(cin,newValue);
+        contacts[position].setPhoneNumber(newValue);
+        addressesFile.saveContactsToFile(contacts);
+        cout << "Zapisano zmiany!";
+        Sleep(1500);
+        break;
+    case 4:
+        cout << "Nowy email: ";
+        cin.ignore();
+        getline(cin,newValue);
+        contacts[position].setEmail(newValue);
+        addressesFile.saveContactsToFile(contacts);
+        cout << "Zapisano zmiany!";
+        Sleep(1500);
+        break;
+    case 5:
+        cout << "Nowy adres: ";
+        cin.ignore();
+        getline(cin,newValue);
+        contacts[position].setAddress(newValue);
+        addressesFile.saveContactsToFile(contacts);
+        cout << "Zapisano zmiany!";
+        Sleep(1500);
+        break;
+    case 6:
+        return;
+    default:
+        cout << "Nie ma takiej opcji!";
+        Sleep(2000);
+        return;
+    }
 }

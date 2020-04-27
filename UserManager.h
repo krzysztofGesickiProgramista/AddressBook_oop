@@ -26,7 +26,6 @@ public:
     int logIn();                                     // logowanie uzytkownika
     void loadUsersTextFile();                        // wczytaj uzytkownikow z pliku do wektora
     void changePassword(int currentUserId);          // zmiana hasla uzytkownika
-
 };
 
 #endif // USERMANAGER_H
