@@ -1,18 +1,6 @@
 #include "AddressBook.h"
 
-void AddressBook::signIn() {                                 // rejestracja uzytkownika
-    userManager.signIn();
-}
-
-int AddressBook::logIn() {
-    return userManager.logIn();                // logowanie uzytkownika
-}
-
-void AddressBook::addNewContact(int currenUserId) {
-    contactManager.addNewContact(currenUserId);          // dodawanie nowego adresata
-}
-
-void AddressBook::start() {
+void AddressBook::start() {                                  // startowanie programu
     char choice;
     while (true){
         if (logged) {
@@ -28,6 +16,19 @@ void AddressBook::start() {
     }
 }
 
+void AddressBook::signIn() {                                 // rejestracja uzytkownika
+    userManager.signIn();
+}
+
+int AddressBook::logIn() {                                   // logowanie uzytkownika
+    return userManager.logIn();
+}
+
+void AddressBook::addNewContact(int currenUserId) {          // dodawanie nowego adresata
+    contactManager.addNewContact(currenUserId);
+}
+
+
 void AddressBook::controlUnLoggedOption(char choice) {
     switch (choice) {
         case LOGIN:
@@ -36,7 +37,7 @@ void AddressBook::controlUnLoggedOption(char choice) {
                 logged = true;
                 // TODO
                 // ustawic ID uzytkownika w UserManager
-                //ContactManager contactManager(currentUserId);
+                contactManager.loadAddressesTextFile(currentUserId);    // zaladuj adresatow z pliku
             }
             break;
         case REGISTER:

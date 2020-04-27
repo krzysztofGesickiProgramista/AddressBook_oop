@@ -16,7 +16,7 @@ class AddressesFile {
 public:
     AddressesFile(string addressesFileName) : addressesFileName(addressesFileName) {};
     void saveContactsToFile(vector <Contact> contacts);             // zapisanie adresatow do pliku tekstowego
-    //vector <User> addUsersFromFile();                             // wczytanie adresatow z pliku tekstowego do vectora
+    vector <Contact> addAddressesFromFile(int currentUserId);       // wczytanie adresatow z pliku tekstowego do vectora
 };
 
 

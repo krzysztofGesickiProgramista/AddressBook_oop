@@ -1,19 +1,19 @@
 #include "ContactManager.h"
 
-void ContactManager::addNewContact(int currentUserId) {         // dodaj nowego adresata
+void ContactManager::addNewContact(int currentUserId) {              // dodaj nowego adresata
     Contact temporaryContact = getNewContact(currentUserId);    // dodaj nowy kontakt do obiektu
     contacts.push_back(temporaryContact);                       // dodaj obiekt do vectora
     addressesFile.saveContactsToFile(contacts);                 // dodaj vector z kontaktami do pliku tekstowego
 }
 
-int ContactManager::getNewContactId() {                    // wyciagniecie ostatniego id z vectora
+int ContactManager::getNewContactId() {                              // wyciagniecie ostatniego id z vectora
     if (contacts.empty() == true)
         return 1;
     else
         return contacts.back().getId() + 1;
 }
 
-Contact ContactManager::getNewContact(int currentUserId) {
+Contact ContactManager::getNewContact(int currentUserId) {           // pobranie danych nowego adresata
     Contact givenContact;
     int id = getNewContactId();
     string name, surname, phoneNumber, email, address;
@@ -41,8 +41,6 @@ Contact ContactManager::getNewContact(int currentUserId) {
     return givenContact;
 }
 
-
-
-//void ContactManager::loadAddressesTextFile() {             // wczytanie uzytkownikow z pliku do vectora
-//    contacts = addressesFile.addUsersFromFile();
-//}
+void ContactManager::loadAddressesTextFile(int currentUserId) {       // wczytanie uzytkownikow z pliku do vectora
+    contacts = addressesFile.addAddressesFromFile(currentUserId);
+}
