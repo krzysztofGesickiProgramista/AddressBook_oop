@@ -20,6 +20,7 @@ public:
     int getNewContactId();                                // pobierz id ostatniego adresata
     void loadAddressesTextFile(int currentUserId);        // wczytaj adresatow z pliku do wektora
     void searchContactByName();                           // szukaj adresata po imieniu
+    void searchContactBySurname();                        // szukaj adresata po nazwisku
 };
 
 #endif // CONTACTMANAGER_H

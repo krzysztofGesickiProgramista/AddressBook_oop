@@ -36,6 +36,10 @@ void AddressBook::searchContactByName() {                    // szukanie adresat
     contactManager.searchContactByName();
 }
 
+void AddressBook::searchContactBySurname() {                 // szukanie adresata po nazwisku
+    contactManager.searchContactBySurname();
+}
+
 
 
 
@@ -67,14 +71,12 @@ void AddressBook::controlLoggedOption(char choice) {
     switch (choice) {
         case ADD_CONTACT:
             addNewContact(currentUserId);
-            cout << "ADD_CONTACT";
             break;
         case SEARCH_WITH_NAME:
             searchContactByName();
-            cout << "SEARCH_WITH_NAME";
             break;
         case SEARCH_WITH_SURNAME:
-            cout << "SEARCH_WITH_SURNAME";
+            searchContactBySurname();
             break;
         case SHOW_ALL:
             cout << "SHOW_ALL";

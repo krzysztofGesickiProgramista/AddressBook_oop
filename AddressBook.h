@@ -40,17 +40,18 @@ public:
     logged = false;
     currentUserId = 0;
     }
-    void start();                                                        // wystartowanie programu
+    void start();                                                 // wystartowanie programu
 
-    void signIn();                                                       // rejestracja uzytkownika
-    int logIn();                                                         // logowanie uzytkownika
-    void changePassword(int currentUserId);                              // zmiana hasla uzytkownika
+    void signIn();                                                // rejestracja uzytkownika
+    int logIn();                                                  // logowanie uzytkownika
+    void changePassword(int currentUserId);                       // zmiana hasla uzytkownika
 
-    void controlUnLoggedOption(char choice);                             // sterowanie menu niezalogowanego uzytkownika
-    void controlLoggedOption(char choice);                               // sterowanie menu zalogowanego uzytkownika
+    void controlUnLoggedOption(char choice);                      // sterowanie menu niezalogowanego uzytkownika
+    void controlLoggedOption(char choice);                        // sterowanie menu zalogowanego uzytkownika
 
-    void addNewContact(int currenUserId);                                // dodanie nowego adresata
-    void searchContactByName();                                          // wyszukiwanie adresata po imieniu
+    void addNewContact(int currenUserId);                         // dodanie nowego adresata
+    void searchContactByName();                                   // wyszukiwanie adresata po imieniu
+    void searchContactBySurname();                                // wyszukiwanie adresata po imieniu
 
 
 };
